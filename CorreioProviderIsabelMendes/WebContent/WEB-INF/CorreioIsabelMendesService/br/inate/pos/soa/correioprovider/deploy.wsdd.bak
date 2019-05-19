@@ -1,0 +1,39 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from CorreioIsabelMendesService WSDL service -->
+
+  <service name="CorreioIsabelMendes" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://correioprovider.soa.pos.inate.br"/>
+      <parameter name="wsdlServiceElement" value="CorreioIsabelMendesService"/>
+      <parameter name="schemaQualified" value="http://correioprovider.soa.pos.inate.br"/>
+      <parameter name="wsdlServicePort" value="CorreioIsabelMendes"/>
+      <parameter name="className" value="br.inate.pos.soa.correioprovider.CorreioIsabelMendesSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="CorreioIsabelMendes"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="calcPrecoPrazo" qname="operNS:calcPrecoPrazo" xmlns:operNS="http://correioprovider.soa.pos.inate.br" returnQName="retNS:calcPrecoPrazoReturn" xmlns:retNS="http://correioprovider.soa.pos.inate.br" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:sCepOrigem" xmlns:pns="http://correioprovider.soa.pos.inate.br" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:sCepDestino" xmlns:pns="http://correioprovider.soa.pos.inate.br" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:nVlPeso" xmlns:pns="http://correioprovider.soa.pos.inate.br" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:nCdFormato" xmlns:pns="http://correioprovider.soa.pos.inate.br" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:nVlComprimento" xmlns:pns="http://correioprovider.soa.pos.inate.br" type="tns:decimal" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:nVlAltura" xmlns:pns="http://correioprovider.soa.pos.inate.br" type="tns:decimal" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:nVlLargura" xmlns:pns="http://correioprovider.soa.pos.inate.br" type="tns:decimal" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:nVlDiametro" xmlns:pns="http://correioprovider.soa.pos.inate.br" type="tns:decimal" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:sCdMaoPropria" xmlns:pns="http://correioprovider.soa.pos.inate.br" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:nVlValorDeclarado" xmlns:pns="http://correioprovider.soa.pos.inate.br" type="tns:decimal" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:sCdAvisoRecebimento" xmlns:pns="http://correioprovider.soa.pos.inate.br" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="calcPrecoPrazo"/>
+
+  </service>
+</deployment>

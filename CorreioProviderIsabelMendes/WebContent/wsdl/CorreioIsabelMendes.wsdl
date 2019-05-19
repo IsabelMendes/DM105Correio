@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://correioprovider.soa.pos.inate.br" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://correioprovider.soa.pos.inate.br" xmlns:intf="http://correioprovider.soa.pos.inate.br" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://correioprovider.soa.pos.inate.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="calcPrecoPrazo">
+    <complexType>
+     <sequence>
+      <element name="sCepOrigem" type="xsd:string"/>
+      <element name="sCepDestino" type="xsd:string"/>
+      <element name="nVlPeso" type="xsd:string"/>
+      <element name="nCdFormato" type="xsd:int"/>
+      <element name="nVlComprimento" type="xsd:decimal"/>
+      <element name="nVlAltura" type="xsd:decimal"/>
+      <element name="nVlLargura" type="xsd:decimal"/>
+      <element name="nVlDiametro" type="xsd:decimal"/>
+      <element name="sCdMaoPropria" type="xsd:string"/>
+      <element name="nVlValorDeclarado" type="xsd:decimal"/>
+      <element name="sCdAvisoRecebimento" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="calcPrecoPrazoResponse">
+    <complexType>
+     <sequence>
+      <element name="calcPrecoPrazoReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="calcPrecoPrazoResponse">
+
+      <wsdl:part element="impl:calcPrecoPrazoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="calcPrecoPrazoRequest">
+
+      <wsdl:part element="impl:calcPrecoPrazo" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CorreioIsabelMendes">
+
+      <wsdl:operation name="calcPrecoPrazo">
+
+         <wsdl:input message="impl:calcPrecoPrazoRequest" name="calcPrecoPrazoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:calcPrecoPrazoResponse" name="calcPrecoPrazoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CorreioIsabelMendesSoapBinding" type="impl:CorreioIsabelMendes">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="calcPrecoPrazo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="calcPrecoPrazoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="calcPrecoPrazoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CorreioIsabelMendesService">
+
+      <wsdl:port binding="impl:CorreioIsabelMendesSoapBinding" name="CorreioIsabelMendes">
+
+         <wsdlsoap:address location="http://localhost:8080/CorreioProviderIsabelMendes/services/CorreioIsabelMendes"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
